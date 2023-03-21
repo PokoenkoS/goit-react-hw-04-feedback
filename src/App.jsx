@@ -1,7 +1,6 @@
 
 import React from "react";
 import { useState} from "react";
-import { Component } from "react";
 import Statistics from "./components/Statistics";
 import FeedbackOptions from "./components/FeedbackOptions";
 import Section from "./components/Section";
@@ -15,17 +14,17 @@ export function App () {
   const [neutral, setNeutral] = useState(0);
   const [bad, setBad] = useState(0);
 
- const handleChange = propertyName => {
+ const handleChange = (propertyName) => {
   
 
   switch(propertyName) {
-    case 'good':
+    case "good":
     setGood(prev => prev + 1);
     break;
-    case 'neutral':
+    case "neutral":
     setNeutral(prev => prev + 1);
     break; 
-    case 'bad':
+    case "bad":
     setBad(prev => prev + 1);
     break;
     default:
@@ -33,25 +32,23 @@ export function App () {
   }
  }
 
-  countTotalFeedback=()=>{
+ const countTotalFeedback=()=>{
    return  good + neutral + bad
       
     };
 
-  countPositiveFeedbackPercentage =()=>{
+ const countPositiveFeedbackPercentage =()=>{
   return Math.round((good / countTotalFeedback())*100)
 
   }
 
-
-     
     return (
         <Container>
         <Section title="Please leave feedback"/>
         
         <FeedbackOptions 
-        options = {[good, neutral, bad]}
-        onLeaveFeedback={handleChange()}
+        options = {["good", "neutral", "bad"]}
+        handleChange={handleChange}
          /> 
         
         <Section title= "Statistics">
